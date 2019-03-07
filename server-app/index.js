@@ -54,6 +54,18 @@ app.post('/recipes', function (req, postRes) {
     });
 });
 
+app.get('/recipes', function (req, postRes) {
+    connection.connect(function (err, res) {
+
+        connection.query('SELECT * FROM `recipes`', function (err, res) {
+            if (err) {
+                console.log(err.sql);
+            }
+
+            postRes.send(res);
+        });
+    });
+});
 app.listen(PORT, function () {
     console.log('server started as port' + PORT);
 

@@ -15,4 +15,8 @@ export class RecipeService {
     console.log(r);
     return this.httpClient.post<string>('http://localhost:8888/recipes', r);
   }
+
+  getRecipes():Observable<Recipes[]>{
+    return this.httpClient.get<Recipes[]>('http://localhost:8888/recipes');
+  }
 }
