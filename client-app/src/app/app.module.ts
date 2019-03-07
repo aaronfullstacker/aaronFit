@@ -11,6 +11,7 @@ import { ContactComponent } from './contact/contact.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { ListComponent } from './list/list.component';
+import { AddComponent } from './add/add.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ListComponent } from './list/list.component';
     ContactComponent,
     RecipesComponent,
     RecipeItemComponent,
-    ListComponent
+    ListComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,

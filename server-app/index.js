@@ -19,22 +19,40 @@ var connection = mysql.createConnection({
 
 
 
-app.post('/contact', function(req,res) {
+app.post('/contact', function (req, postRes) {
     console.log(req.body);
-    connection.connect();  
-    const data = req.body;
-   connection.query('INSERT INTO register SET ?',data,function(err,res){
-       if (err) {
-           console.log(err.sql);
-       }  
+    connection.connect(function (err, d) {
+        const data = req.body;
+        connection.query('INSERT INTO register SET ?', data, function (err, res) {
+            if (err) {
+                console.log(err.sql);
+            }
+            postRes.json('ok');
+        });
 
-       res.end('ok');
-   });
 
-   
-    
-})
 
+    });
+
+
+
+});
+
+app.post('/recipes', function (req, postRes) {
+    connection.connect(function (err, res) {
+        let data = {
+            name: req.body.name,
+            instructions: req.body.instructions
+        }
+        connection.query('INSERT INTO recipes SET ?', data, function (err, res) {
+            if (err) {
+                console.log(err.sql);
+            }
+
+            postRes.json('ok');
+        });
+    });
+});
 
 app.listen(PORT, function () {
     console.log('server started as port' + PORT);

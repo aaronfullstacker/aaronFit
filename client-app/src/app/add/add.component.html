@@ -1,0 +1,18 @@
+<p>
+  add works!
+</p>
+<!-- <div *ngIf=!recipe> -->
+  <div class="form-group">
+    <label>recipe name:</label>
+    <input type="text" [(ngModel)]="recipe.name" name="name" id="name" class="form-control input-sm" placeholder="What U makein'?">
+  </div>
+<hr>
+  <div class="form-group">
+    <label>recipe instructions:</label>
+    <input type="text" [(ngModel)]="recipe.instructions" name="instructions" id="instructions" class="form-control input-sm" placeholder="how 2 makeIt'?">
+  </div>
+<input type="submit" value="makeIt" (click)="onClick()" class="btn btn-info btn-block">
+<!-- </div> -->
+
+
+

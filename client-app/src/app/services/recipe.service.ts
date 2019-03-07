@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { RecipesModel } from '../models/recipes.model';
+import { Recipes } from '../models/recipes';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -9,4 +10,9 @@ import { HttpClient } from '@angular/common/http';
 export class RecipeService {
 
   constructor(private httpClient: HttpClient) { }
+
+  onClick(r: Recipes): Observable<string>{
+    console.log(r);
+    return this.httpClient.post<string>('http://localhost:8888/recipes', r);
+  }
 }
