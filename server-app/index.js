@@ -4,6 +4,8 @@ const PORT = 8888;
 const app = express();
 const mysql = require('mysql');
 const fs = require('fs'); //file system
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 const rl = require('readline'); //read line
 
 
@@ -66,7 +68,21 @@ app.get('/recipes', function (req, postRes) {
         });
     });
 });
-app.listen(PORT, function () {
+
+io.on('conection', function(socket){
+    socket.on('message',function(msg){
+        numArray.push(+msg);
+        socket.emit('message', numArray);
+        
+    });
+
+    socket.on('disconnect',function(){
+        console.log('user disconnected');
+        
+    })
+})
+
+http.listen(PORT, function () {
     console.log('server started as port' + PORT);
 
 });

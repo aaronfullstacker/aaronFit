@@ -20,8 +20,9 @@ export class AddComponent implements OnInit {
   }
 
   onClick(){
-    this.recipeService.onClick(this.recipe).subscribe()
+    this.recipeService.post(this.recipe).subscribe(res => {
+      console.log(res);
+    });
     
   }
-
 }

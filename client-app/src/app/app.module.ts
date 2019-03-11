@@ -13,6 +13,11 @@ import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 
+//socket.io
+import {SocketIoModule,SocketIoConfig} from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:8888', options:{} };
+//end socket io
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +34,8 @@ import { AddComponent } from './add/add.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]
